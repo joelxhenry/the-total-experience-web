@@ -172,16 +172,15 @@ export const siteConfig = {
 
   // Service Areas
   serviceAreas: [
-    'Los Angeles County',
-    'Orange County',
-    'Ventura County',
-    'San Bernardino County'
+    'The Total Educational Experience',
+    '2927 Berwick Ave',
+    'Baltimore MD, 21234'
   ],
 
   // Booking & External Services
   booking: {
     squareAppointmentsUrl: 'https://squareup.com/appointments/book/your-booking-url',
-    emergencyPhone: '(555) 123-4567',
+    emergencyPhone: '(443) 414-0807',
     preferredContactMethod: 'phone', // 'phone' or 'email'
 
     // Square Appointments Widget Configuration
