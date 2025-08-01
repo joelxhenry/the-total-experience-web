@@ -22,6 +22,7 @@ export const useSiteConfig = () => {
     
     // Instructor details
     instructor: siteConfig.instructor,
+    instructors: siteConfig.instructors,
     
     // Social media
     social: siteConfig.social,

@@ -39,26 +39,68 @@ export const siteConfig = {
     author: 'The Total Education Experience'
   },
 
-  // Instructor Information
-  instructor: {
-    name: 'Nadine Henry-Thomas',
-    credentials: 'DNP MSN-Ed CMSRN PCCN',
-    title: 'Certified BLS & ACLS Instructor',
-    fullTitle: 'Lead BLS & ACLS Instructor',
-    experience: {
-      nursing: '8+ years',
-      training: '5+ years',
-      specialties: ['Emergency Nursing', 'ICU Nursing', 'Critical Care']
-    },
-    // Note: instructor image is now referenced from assets.instructorImage for consistency
-    bio: `I’m excited to have you here! As a dedicated healthcare professional and certified instructor, 
-    I am committed to providing top-quality BLS (Basic Life Support) certification training for healthcare workers, 
-    first responders, and anyone eager to learn life-saving skills.
-    My mission is simple, empowering you with the knowledge and confidence to take action 
-    in critical situations. I follow the latest American Heart Association guidelines, ensuring you receive 
-    up-to-date, hands-on training that truly makes a difference.
-    Let’s get started on this journey together!`
-  },
+  // Instructor Information - Multiple instructors support
+  instructors: [
+    {
+      id: 'nadine-henry-thomas',
+      name: 'Nadine Henry-Thomas',
+      credentials: 'DNP, MSN-Ed, CMSRN, PCCN',
+      title: 'Certified BLS & ACLS Instructor',
+      fullTitle: 'Lead BLS & ACLS Instructor',
+      image: '/images/instructor/nadine-photo.jpg',
+      imageAlt: 'Professional headshot of Nadine Henry-Thomas',
+      experience: {
+        nursing: '8+ years',
+        training: '5+ years',
+        specialties: ['Emergency Nursing', 'ICU Nursing', 'Critical Care']
+      },
+      qualifications: [
+        'Doctor of Nursing Practice (DNP)',
+        'Master of Science in Nursing Education (MSN-Ed)',
+        'Certified Medical-Surgical Registered Nurse (CMSRN)',
+        'Progressive Care Certified Nurse (PCCN)',
+        'American Heart Association BLS & ACLS Instructor Certified',
+        '8+ years of critical care nursing experience',
+        '5+ years of training and education experience'
+      ],
+      bio: `I'm excited to have you here! As a dedicated healthcare professional and certified instructor, 
+      I am committed to providing top-quality BLS (Basic Life Support) certification training for healthcare workers, 
+      first responders, and anyone eager to learn life-saving skills.
+      My mission is simple, empowering you with the knowledge and confidence to take action 
+      in critical situations. I follow the latest American Heart Association guidelines, ensuring you receive 
+      up-to-date, hands-on training that truly makes a difference.
+      Let's get started on this journey together!`
+    }
+    // {
+    //   id: 'sarah-martinez',
+    //   name: 'Sarah Martinez',
+    //   credentials: 'RN BSN CEN',
+    //   title: 'Senior BLS & ACLS Instructor',
+    //   fullTitle: 'Senior Emergency Nursing Instructor',
+    //   image: '/images/instructor/sarah-photo.jpg',
+    //   imageAlt: 'Professional headshot of Sarah Martinez',
+    //   experience: {
+    //     nursing: '10+ years',
+    //     training: '6+ years',
+    //     specialties: ['Emergency Medicine', 'Trauma Care', 'Pediatric Emergency']
+    //   },
+    //   qualifications: [
+    //     'Registered Nurse (RN)',
+    //     'Bachelor of Science in Nursing (BSN)',
+    //     'Certified Emergency Nurse (CEN)',
+    //     'American Heart Association BLS Instructor',
+    //     'American Heart Association ACLS Instructor',
+    //     'PALS (Pediatric Advanced Life Support) Certified',
+    //     '10+ years emergency department experience',
+    //     '6+ years of clinical instruction experience'
+    //   ],
+    //   bio: `With over a decade of experience in emergency medicine, I bring real-world expertise to every training session. 
+    //   Having worked in high-pressure emergency departments, I understand the critical importance of rapid, effective response in life-threatening situations.
+    //   My approach combines evidence-based techniques with practical scenarios that prepare you for real emergencies. 
+    //   I'm passionate about empowering healthcare professionals and community members with the skills and confidence needed to save lives.
+    //   Together, we'll master the essential techniques that can make all the difference when seconds count.`
+    // }
+  ],
 
   // Social Media Links
   social: {
