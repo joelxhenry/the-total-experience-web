@@ -9,36 +9,34 @@ export const siteConfig = {
 
   // Contact Information
   contact: {
-    phone: '(555) 123-4567',
-    phoneLink: 'tel:+15551234567',
-    email: 'info@blsaclstraining.com',
-    emailLink: 'mailto:info@blsaclstraining.com'
+    phone: '(443) 414-0807',
+    phoneLink: 'tel:+14434140807',
+    email: 'total.experience02@gmail.com',
+    emailLink: 'mailto:total.experience02@gmail.com'
   },
 
   // Business Address
   address: {
-    street: '123 Healthcare Drive',
-    city: 'Medical City',
-    state: 'CA',
-    zipCode: '90210',
-    full: '123 Healthcare Drive, Medical City, CA 90210'
+    street: '2927 Berwick Ave',
+    city: 'Baltimore',
+    state: 'MD',
+    zipCode: '21234',
+    full: '2927 Berwick Ave, Baltimore, MD 21234'
   },
 
   // Business Information
   business: {
-    legalName: 'BLS & ACLS Training Services LLC',
-    founded: '2020',
-    license: 'CA-BLS-2024-001',
-    certifications: ['American Heart Association Authorized Training Center']
+    legalName: 'The Total Educational Experience, LLC',
+    founded: '2022',
+    license: null,
+    certifications: []//['American Heart Association Authorized Training Center']
   },
 
   // SEO & Meta Information
   seo: {
     title: 'BLS & ACLS Training - Professional Life-Saving Certification',
     keywords: 'BLS training, ACLS training, CPR certification, American Heart Association, mobile training, nursing instructor',
-    author: 'The Total Education Experience',
-    twitterHandle: '@TTETraining',
-    facebookPage: 'TTETraining'
+    author: 'The Total Education Experience'
   },
 
   // Instructor Information
@@ -64,10 +62,10 @@ export const siteConfig = {
 
   // Social Media Links
   social: {
-    facebook: 'https://facebook.com/TTETraining',
-    twitter: 'https://twitter.com/TTETraining',
-    linkedin: 'https://linkedin.com/company/tte-training',
-    instagram: 'https://instagram.com/ttetraining'
+    // facebook: 'https://facebook.com/TTETraining',
+    // twitter: 'https://twitter.com/TTETraining',
+    // linkedin: 'https://linkedin.com/company/tte-training',
+    instagram: 'https://instagram.com/nadinefht1'
   },
 
   // Assets & Branding
@@ -172,9 +170,6 @@ export const siteConfig = {
 
   // Service Areas
   serviceAreas: [
-    'The Total Educational Experience',
-    '2927 Berwick Ave',
-    'Baltimore MD, 21234'
   ],
 
   // Booking & External Services

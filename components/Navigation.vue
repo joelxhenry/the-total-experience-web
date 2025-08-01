@@ -164,7 +164,7 @@ const openSquareBooking = () => {
 }
 
 .logo-container {
-  @apply relative w-12 h-12 rounded-xl shadow-lg overflow-hidden bg-white;
+  @apply relative w-12 h-12 rounded-xl overflow-hidden;
   transition: all 0.3s ease;
 }
 
@@ -178,7 +178,7 @@ const openSquareBooking = () => {
 }
 
 .logo-image {
-  @apply w-full h-full object-contain rounded-xl p-1;
+  @apply w-full h-full object-contain rounded-xl;
   transition: all 0.3s ease;
 }
 
