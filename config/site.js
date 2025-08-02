@@ -52,7 +52,7 @@ export const siteConfig = {
       experience: {
         nursing: '8+ years',
         training: '5+ years',
-        specialties: ['Emergency Nursing', 'ICU Nursing', 'Critical Care']
+        specialties: ['Cardiac Telemetry', 'ICU Nursing']
       },
       qualifications: [
         'Doctor of Nursing Practice (DNP)',
@@ -60,7 +60,7 @@ export const siteConfig = {
         'Certified Medical-Surgical Registered Nurse (CMSRN)',
         'Progressive Care Certified Nurse (PCCN)',
         'American Heart Association BLS & ACLS Instructor Certified',
-        '8+ years of critical care nursing experience',
+        '8+ years of cardiac telemetry',
         '5+ years of training and education experience'
       ],
       bio: `I'm excited to have you here! As a dedicated healthcare professional and certified instructor, 

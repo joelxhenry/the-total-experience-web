@@ -92,7 +92,6 @@
         <div class="mobile-menu__cta">
           <Button 
             label="Book Training Now" 
-            icon="pi pi-calendar"
             class="w-full mobile-cta-button"
             @click="openSquareBooking"
           />
@@ -348,6 +347,16 @@ const openSquareBooking = () => {
 
 .mobile-cta-button {
   @apply bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white py-3 rounded-xl shadow-lg;
+}
+
+.mobile-cta-button.p-button .p-button-icon {
+  margin-right: 0.5rem !important;
+}
+
+.mobile-cta-button.p-button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 /* PrimeVue Button Overrides */
