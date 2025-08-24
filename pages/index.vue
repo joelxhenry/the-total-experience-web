@@ -21,8 +21,8 @@
     <!-- Instructor Section Component -->
     <InstructorSection @open-square-booking="openSquareBooking" />
 
-    <!-- Pricing Section Component -->
-    <PricingSection @open-square-booking="openSquareBooking" />
+    <!-- Training Section Component -->
+    <TrainingSection @open-square-booking="openSquareBooking" />
 
     <!-- Square Booking Modal -->
     <SquareBookingModal :is-open="isBookingModalOpen" @close="closeBookingModal" />
@@ -92,8 +92,8 @@
             <ul class="space-y-2 text-gray-300">
               <li><a href="#courses" class="hover:text-white transition-colors">BLS Training</a></li>
               <li><a href="#courses" class="hover:text-white transition-colors">ACLS Training</a></li>
-              <li><a href="#pricing" class="hover:text-white transition-colors">Group Training</a></li>
-              <li><a href="#pricing" class="hover:text-white transition-colors">Mobile Training</a></li>
+              <li><a href="#training" class="hover:text-white transition-colors">Group Training</a></li>
+              <li><a href="#training" class="hover:text-white transition-colors">Mobile Training</a></li>
             </ul>
           </div>
         </div>
@@ -121,7 +121,7 @@ import HeroSection from '~/components/HeroSection.vue'
 import CoursesSection from '~/components/CoursesSection.vue'
 import BenefitsSection from '~/components/BenefitsSection.vue'
 import InstructorSection from '~/components/InstructorSection.vue'
-import PricingSection from '~/components/PricingSection.vue'
+import TrainingSection from '~/components/TrainingSection.vue'
 import FloatingActions from '~/components/FloatingActions.vue'
 import SquareBookingModal from '~/components/SquareBookingModal.vue'
 import { useSiteConfig } from '~/composables/useSiteConfig.js'

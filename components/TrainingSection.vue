@@ -1,14 +1,14 @@
 <template>
-  <section id="pricing" class="py-16 bg-gradient-to-br from-gray-50 to-primary-50 dark:from-gray-800 dark:to-gray-700">
+  <section id="training" class="py-16 bg-gradient-to-br from-gray-50 to-primary-50 dark:from-gray-800 dark:to-gray-700">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800 dark:text-white">
-        Course Packages & Pricing
+        Available Training Courses
       </h2>
       <p class="text-center text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
-        Choose the training package that best fits your needs. All courses include official American Heart Association certification.
+        Professional medical training courses available for healthcare providers. All courses include official American Heart Association certification.
       </p>
       
-      <!-- Interactive Pricing Cards -->
+      <!-- Interactive Training Cards -->
       <div class="max-w-7xl mx-auto">
         <!-- BLS Courses -->
         <div class="mb-12">
@@ -18,15 +18,12 @@
           </h3>
           <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- BLS First Time -->
-            <Card class="pricing-card relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-white dark:bg-gray-800 border-2 border-transparent hover:border-primary-300 dark:hover:border-primary-400">
+            <Card class="training-card relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-white dark:bg-gray-800 border-2 border-transparent hover:border-primary-300 dark:hover:border-primary-400">
               <template #content>
                 <div class="p-6 text-center">
                   <div class="mb-4">
                     <i class="pi pi-star-fill text-3xl text-yellow-500 mb-2"></i>
                     <h4 class="text-lg font-bold text-gray-800 dark:text-white">BLS First Time</h4>
-                  </div>
-                  <div class="mb-4">
-                    <span class="text-4xl font-bold text-primary-600 dark:text-primary-400">$70</span>
                   </div>
                   <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Complete certification course</p>
                   <ul class="text-left text-sm text-gray-600 dark:text-gray-300 mb-6 space-y-2">
@@ -44,15 +41,12 @@
             </Card>
 
             <!-- BLS Renewal -->
-            <Card class="pricing-card relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-white dark:bg-gray-800 border-2 border-transparent hover:border-primary-300 dark:hover:border-primary-400">
+            <Card class="training-card relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-white dark:bg-gray-800 border-2 border-transparent hover:border-primary-300 dark:hover:border-primary-400">
               <template #content>
                 <div class="p-6 text-center">
                   <div class="mb-4">
                     <i class="pi pi-refresh text-3xl text-blue-500 mb-2"></i>
                     <h4 class="text-lg font-bold text-gray-800 dark:text-white">BLS Renewal</h4>
-                  </div>
-                  <div class="mb-4">
-                    <span class="text-4xl font-bold text-primary-600 dark:text-primary-400">$60</span>
                   </div>
                   <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">For current/expired certifications</p>
                   <ul class="text-left text-sm text-gray-600 dark:text-gray-300 mb-6 space-y-2">
@@ -70,7 +64,7 @@
             </Card>
 
             <!-- BLS Group -->
-            <Card class="pricing-card relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-white dark:bg-gray-800 border-2 border-transparent hover:border-primary-300 dark:hover:border-primary-400">
+            <Card class="training-card relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-white dark:bg-gray-800 border-2 border-transparent hover:border-primary-300 dark:hover:border-primary-400">
               <template #header>
                 <div class="bg-gradient-to-r from-orange-400 to-orange-500 text-white text-center py-2 text-sm font-semibold">
                   POPULAR
@@ -81,10 +75,6 @@
                   <div class="mb-4">
                     <i class="pi pi-users text-3xl text-orange-500 mb-2"></i>
                     <h4 class="text-lg font-bold text-gray-800 dark:text-white">Group (6 people)</h4>
-                  </div>
-                  <div class="mb-4">
-                    <span class="text-4xl font-bold text-primary-600 dark:text-primary-400">$50</span>
-                    <span class="text-gray-500 dark:text-gray-400">/person</span>
                   </div>
                   <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Minimum 6 participants</p>
                   <ul class="text-left text-sm text-gray-600 dark:text-gray-300 mb-6 space-y-2">
@@ -102,7 +92,7 @@
             </Card>
 
             <!-- BLS Large Group -->
-            <Card class="pricing-card relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-white dark:bg-gray-800 border-2 border-transparent hover:border-primary-300 dark:hover:border-primary-400">
+            <Card class="training-card relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-white dark:bg-gray-800 border-2 border-transparent hover:border-primary-300 dark:hover:border-primary-400">
               <template #header>
                 <div class="bg-gradient-to-r from-green-400 to-green-500 text-white text-center py-2 text-sm font-semibold">
                   BEST VALUE
@@ -113,10 +103,6 @@
                   <div class="mb-4">
                     <i class="pi pi-building text-3xl text-green-500 mb-2"></i>
                     <h4 class="text-lg font-bold text-gray-800 dark:text-white">Large Group (10+)</h4>
-                  </div>
-                  <div class="mb-4">
-                    <span class="text-4xl font-bold text-primary-600 dark:text-primary-400">$45</span>
-                    <span class="text-gray-500 dark:text-gray-400">/person</span>
                   </div>
                   <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Minimum 10 participants</p>
                   <ul class="text-left text-sm text-gray-600 dark:text-gray-300 mb-6 space-y-2">
@@ -143,15 +129,12 @@
           </h3>
           <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <!-- ACLS First Time -->
-            <Card class="pricing-card relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-white dark:bg-gray-800 border-2 border-transparent hover:border-red-300 dark:hover:border-red-400">
+            <Card class="training-card relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-white dark:bg-gray-800 border-2 border-transparent hover:border-red-300 dark:hover:border-red-400">
               <template #content>
                 <div class="p-6 text-center">
                   <div class="mb-4">
                     <i class="pi pi-star-fill text-3xl text-red-500 mb-2"></i>
                     <h4 class="text-lg font-bold text-gray-800 dark:text-white">ACLS First Time</h4>
-                  </div>
-                  <div class="mb-4">
-                    <span class="text-4xl font-bold text-red-600 dark:text-red-400">$160</span>
                   </div>
                   <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Complete certification course</p>
                   <ul class="text-left text-sm text-gray-600 dark:text-gray-300 mb-6 space-y-2">
@@ -170,15 +153,12 @@
             </Card>
 
             <!-- ACLS Renewal -->
-            <Card class="pricing-card relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-white dark:bg-gray-800 border-2 border-transparent hover:border-red-300 dark:hover:border-red-400">
+            <Card class="training-card relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-white dark:bg-gray-800 border-2 border-transparent hover:border-red-300 dark:hover:border-red-400">
               <template #content>
                 <div class="p-6 text-center">
                   <div class="mb-4">
                     <i class="pi pi-refresh text-3xl text-blue-500 mb-2"></i>
                     <h4 class="text-lg font-bold text-gray-800 dark:text-white">ACLS Renewal</h4>
-                  </div>
-                  <div class="mb-4">
-                    <span class="text-4xl font-bold text-red-600 dark:text-red-400">$140</span>
                   </div>
                   <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">For current/expired certifications</p>
                   <ul class="text-left text-sm text-gray-600 dark:text-gray-300 mb-6 space-y-2">
@@ -206,7 +186,7 @@
           </h3>
           <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <!-- BLS + ACLS Renewal -->
-            <Card class="pricing-card relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-gray-800 dark:to-purple-900/30 border-2 border-purple-200 dark:border-purple-600/50 hover:border-purple-400 dark:hover:border-purple-500">
+            <Card class="training-card relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-gray-800 dark:to-purple-900/30 border-2 border-purple-200 dark:border-purple-600/50 hover:border-purple-400 dark:hover:border-purple-500">
               <template #header>
                 <div class="bg-gradient-to-r from-purple-500 to-purple-600 text-white text-center py-2 text-sm font-semibold">
                   COMBO DEAL
@@ -217,10 +197,6 @@
                   <div class="mb-4">
                     <i class="pi pi-tags text-3xl text-purple-600 dark:text-purple-400 mb-2"></i>
                     <h4 class="text-lg font-bold text-gray-800 dark:text-white">BLS + ACLS Renewal</h4>
-                  </div>
-                  <div class="mb-4">
-                    <span class="text-4xl font-bold text-purple-600 dark:text-purple-400">$210</span>
-                    <div class="text-sm text-gray-500 dark:text-gray-400 line-through">$200 separately</div>
                   </div>
                   <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Both renewals combined</p>
                   <ul class="text-left text-sm text-gray-600 dark:text-gray-300 mb-6 space-y-2">
@@ -239,7 +215,7 @@
             </Card>
 
             <!-- BLS + ACLS First Time -->
-            <Card class="pricing-card relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-gray-800 dark:to-indigo-900/30 border-2 border-indigo-200 dark:border-indigo-600/50 hover:border-indigo-400 dark:hover:border-indigo-500">
+            <Card class="training-card relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-gray-800 dark:to-indigo-900/30 border-2 border-indigo-200 dark:border-indigo-600/50 hover:border-indigo-400 dark:hover:border-indigo-500">
               <template #header>
                 <div class="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white text-center py-2 text-sm font-semibold">
                   COMPLETE PACKAGE
@@ -250,10 +226,6 @@
                   <div class="mb-4">
                     <i class="pi pi-trophy text-3xl text-indigo-600 dark:text-indigo-400 mb-2"></i>
                     <h4 class="text-lg font-bold text-gray-800 dark:text-white">BLS + ACLS First Time</h4>
-                  </div>
-                  <div class="mb-4">
-                    <span class="text-4xl font-bold text-indigo-600 dark:text-indigo-400">$245</span>
-                    <div class="text-sm text-gray-500 dark:text-gray-400 line-through">$230 separately</div>
                   </div>
                   <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Both complete courses combined</p>
                   <ul class="text-left text-sm text-gray-600 dark:text-gray-300 mb-6 space-y-2">
@@ -282,15 +254,15 @@ defineEmits(['open-square-booking'])
 </script>
 
 <style scoped>
-.pricing-card {
+.training-card {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.pricing-card:hover {
+.training-card:hover {
   transform: translateY(-8px) scale(1.02);
 }
 
-.pricing-card::before {
+.training-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -303,7 +275,7 @@ defineEmits(['open-square-booking'])
   transition: opacity 0.3s ease;
 }
 
-.pricing-card:hover::before {
+.training-card:hover::before {
   opacity: 1;
 }
 
@@ -312,7 +284,7 @@ defineEmits(['open-square-booking'])
   50% { transform: scale(1.05); }
 }
 
-.pricing-card:hover .pi {
+.training-card:hover .pi {
   animation: pulse 2s infinite;
 }
 </style>

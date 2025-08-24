@@ -58,7 +58,7 @@ export const useSiteConfig = () => {
       { id: 'hero', label: 'Home', icon: 'pi pi-home' },
       { id: 'courses', label: 'Courses', icon: 'pi pi-book' },
       { id: 'instructor', label: 'Instructor', icon: 'pi pi-user' },
-      { id: 'pricing', label: 'Pricing', icon: 'pi pi-tags' }
+      { id: 'training', label: 'Training Options', icon: 'pi pi-tags' }
     ]
   }
 }
