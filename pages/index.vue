@@ -29,7 +29,7 @@
 
     <!-- Footer -->
     <footer class="bg-gray-800 dark:bg-gray-900 text-white py-12">
-      <div class="container mx-auto px-4">
+      <div class="container mx-auto px-4 lg:px-20">
         <div class="grid md:grid-cols-4 gap-8 mb-8">
 
           <!-- Logo and Company Info -->
@@ -92,7 +92,6 @@
             <ul class="space-y-2 text-gray-300">
               <li><a href="#courses" class="hover:text-white transition-colors">BLS Training</a></li>
               <li><a href="#courses" class="hover:text-white transition-colors">ACLS Training</a></li>
-              <li><a href="#training" class="hover:text-white transition-colors">Group Training</a></li>
               <li><a href="#training" class="hover:text-white transition-colors">Mobile Training</a></li>
             </ul>
           </div>

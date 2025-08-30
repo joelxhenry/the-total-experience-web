@@ -16,7 +16,7 @@
             <i class="pi pi-heart-fill mr-2"></i>
             Basic Life Support (BLS)
           </h3>
-          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <!-- BLS First Time -->
             <Card class="training-card relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-white dark:bg-gray-800 border-2 border-transparent hover:border-primary-300 dark:hover:border-primary-400">
               <template #content>
@@ -57,62 +57,6 @@
                   <Button 
                     label="Book Now" 
                     class="w-full bg-primary-600 hover:bg-primary-700 text-white py-2 rounded-lg transition-colors"
-                    @click="$emit('open-square-booking')"
-                  />
-                </div>
-              </template>
-            </Card>
-
-            <!-- BLS Group -->
-            <Card class="training-card relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-white dark:bg-gray-800 border-2 border-transparent hover:border-primary-300 dark:hover:border-primary-400">
-              <template #header>
-                <div class="bg-gradient-to-r from-orange-400 to-orange-500 text-white text-center py-2 text-sm font-semibold">
-                  POPULAR
-                </div>
-              </template>
-              <template #content>
-                <div class="p-6 text-center">
-                  <div class="mb-4">
-                    <i class="pi pi-users text-3xl text-orange-500 mb-2"></i>
-                    <h4 class="text-lg font-bold text-gray-800 dark:text-white">Group (6 people)</h4>
-                  </div>
-                  <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Minimum 6 participants</p>
-                  <ul class="text-left text-sm text-gray-600 dark:text-gray-300 mb-6 space-y-2">
-                    <li><i class="pi pi-check text-green-500 dark:text-green-400 mr-2"></i>Group discount</li>
-                    <li><i class="pi pi-check text-green-500 dark:text-green-400 mr-2"></i>On-site training</li>
-                    <li><i class="pi pi-check text-green-500 dark:text-green-400 mr-2"></i>Team building</li>
-                  </ul>
-                  <Button 
-                    label="Book Now" 
-                    class="w-full bg-orange-500 hover:bg-orange-600 text-white py-2 rounded-lg transition-colors"
-                    @click="$emit('open-square-booking')"
-                  />
-                </div>
-              </template>
-            </Card>
-
-            <!-- BLS Large Group -->
-            <Card class="training-card relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-white dark:bg-gray-800 border-2 border-transparent hover:border-primary-300 dark:hover:border-primary-400">
-              <template #header>
-                <div class="bg-gradient-to-r from-green-400 to-green-500 text-white text-center py-2 text-sm font-semibold">
-                  BEST VALUE
-                </div>
-              </template>
-              <template #content>
-                <div class="p-6 text-center">
-                  <div class="mb-4">
-                    <i class="pi pi-building text-3xl text-green-500 mb-2"></i>
-                    <h4 class="text-lg font-bold text-gray-800 dark:text-white">Large Group (10+)</h4>
-                  </div>
-                  <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Minimum 10 participants</p>
-                  <ul class="text-left text-sm text-gray-600 dark:text-gray-300 mb-6 space-y-2">
-                    <li><i class="pi pi-check text-green-500 dark:text-green-400 mr-2"></i>Maximum savings</li>
-                    <li><i class="pi pi-check text-green-500 dark:text-green-400 mr-2"></i>Corporate training</li>
-                    <li><i class="pi pi-check text-green-500 dark:text-green-400 mr-2"></i>Flexible scheduling</li>
-                  </ul>
-                  <Button 
-                    label="Book Now" 
-                    class="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg transition-colors"
                     @click="$emit('open-square-booking')"
                   />
                 </div>

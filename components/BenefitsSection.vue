@@ -4,7 +4,7 @@
       <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800 dark:text-white">
         Why Choose Our Training?
       </h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
         <Card class="text-center shadow-lg hover:shadow-xl transition-shadow bg-white dark:bg-gray-800 border dark:border-gray-600">
           <template #content>
             <div class="p-6">
@@ -21,25 +21,14 @@
           <template #content>
             <div class="p-6">
               <i class="pi pi-map-marker text-4xl text-primary-600 dark:text-primary-400 mb-4"></i>
-              <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">On-Location Training</h3>
+              <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Mobile Training</h3>
               <p class="text-gray-600 dark:text-gray-300">
-                Convenient mobile training at your workplace, home, or preferred location.
+                Convenient mobile training - we can come to you at your workplace or preferred location.
               </p>
             </div>
           </template>
         </Card>
 
-        <Card class="text-center shadow-lg hover:shadow-xl transition-shadow bg-white dark:bg-gray-800 border dark:border-gray-600">
-          <template #content>
-            <div class="p-6">
-              <i class="pi pi-users text-4xl text-primary-600 dark:text-primary-400 mb-4"></i>
-              <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Group Discounts</h3>
-              <p class="text-gray-600 dark:text-gray-300">
-                Special pricing for groups and organizations. Perfect for workplace training programs.
-              </p>
-            </div>
-          </template>
-        </Card>
 
         <Card class="text-center shadow-lg hover:shadow-xl transition-shadow bg-white dark:bg-gray-800 border dark:border-gray-600">
           <template #content>

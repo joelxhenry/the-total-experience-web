@@ -5,7 +5,7 @@ export const siteConfig = {
   siteName: 'The Total Education Experience',
   siteAbbreviation: 'TTEE',
   tagline: 'BLS & ACLS Training',
-  description: 'Professional BLS and ACLS training with on-location service. Expert nursing instruction for healthcare professionals and individuals.',
+  description: 'Professional BLS and ACLS training with mobile service. Expert nursing instruction for healthcare professionals and individuals.',
 
   // Contact Information
   contact: {
@@ -45,8 +45,8 @@ export const siteConfig = {
       id: 'nadine-henry-thomas',
       name: 'Nadine Henry-Thomas',
       credentials: 'DNP, MSN-Ed, CMSRN, PCCN',
-      title: 'Certified BLS & ACLS Instructor',
-      fullTitle: 'Lead BLS & ACLS Instructor',
+      title: 'AHA Certified BLS & ACLS Instructor',
+      fullTitle: 'Lead AHA Certified BLS & ACLS Instructor',
       image: '/images/instructor/nadine-photo.jpg',
       imageAlt: 'Professional headshot of Nadine Henry-Thomas',
       experience: {
@@ -59,7 +59,7 @@ export const siteConfig = {
         'Master of Science in Nursing Education (MSN-Ed)',
         'Certified Medical-Surgical Registered Nurse (CMSRN)',
         'Progressive Care Certified Nurse (PCCN)',
-        'American Heart Association BLS & ACLS Instructor Certified',
+        'AHA Certified BLS & ACLS Instructor',
         '8+ years of cardiac telemetry',
         '5+ years of training and education experience'
       ],
@@ -142,7 +142,7 @@ export const siteConfig = {
     // Benefits Section Images (optional background images for cards)
     benefitsImages: {
       expertInstructor: null, // Set to null for icon-only, or add image URL
-      onLocationTraining: null,
+      mobileTraining: null,
       groupDiscounts: null,
       certifiedTraining: null
     },

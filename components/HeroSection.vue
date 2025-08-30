@@ -45,7 +45,7 @@
             <!-- Subtitle -->
             <p class="text-xl md:text-2xl mb-8 text-gray-200 leading-relaxed animate-slideInUp animation-delay-600">
               Expert nursing instruction for life-saving skills. 
-              <span class="text-green-400 font-semibold">On-location training</span> 
+              <span class="text-green-400 font-semibold">Mobile training</span> 
               available throughout the area.
             </p>
             

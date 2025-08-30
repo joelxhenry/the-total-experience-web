@@ -9,7 +9,7 @@
             Mobile Training Available
           </h3>
           <p class="text-lg text-primary-700 dark:text-primary-400 mb-2">
-            All training is offered on-location at your convenience. We come to you!
+            All training is offered as mobile service at your convenience. We come to you!
           </p>
           <p class="text-primary-600 dark:text-primary-500">
             <strong>{{ config.mobileTraining.notes }}</strong>
@@ -71,6 +71,19 @@
           </div>
         </div>
 
+        <!-- AHA Disclaimer -->
+        <div class="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-600 rounded-lg p-6 mb-8">
+          <div class="flex items-start">
+            <i class="pi pi-info-circle text-blue-600 dark:text-blue-400 mt-1 mr-3 text-lg"></i>
+            <div class="text-sm text-blue-800 dark:text-blue-300">
+              <p class="font-semibold mb-2">American Heart Association Notice</p>
+              <p class="leading-relaxed">
+                The American Heart Association strongly promotes knowledge and proficiency in all AHA courses and has developed instructional materials for this purpose. Use of these materials in an educational course does not represent course sponsorship by the AHA. Any fees charged for such a course, except for a portion of fees needed for AHA course materials, do not represent income to the AHA.
+              </p>
+            </div>
+          </div>
+        </div>
+
         <!-- Contact Information -->
         <div class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm p-8 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600">
           <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-white">Questions? Contact Us</h3>
@@ -103,8 +116,7 @@ const {
   openBookingWidget, 
   buttonStyle, 
   buttonText, 
-  bookingUrl,
-  isScriptLoaded 
+  bookingUrl
 } = useSquareBooking()
 
 // Component state

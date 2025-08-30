@@ -64,6 +64,19 @@
               </div>
             </div>
           </div>
+
+          <!-- AHA Disclaimer -->
+          <div class="bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-600 rounded-lg p-4 mb-4">
+            <div class="flex items-start">
+              <i class="pi pi-exclamation-triangle text-yellow-600 dark:text-yellow-400 mt-1 mr-3"></i>
+              <div class="text-sm text-yellow-800 dark:text-yellow-300">
+                <p class="font-semibold mb-1">American Heart Association Notice</p>
+                <p class="text-yellow-700 dark:text-yellow-400 leading-relaxed">
+                  The American Heart Association strongly promotes knowledge and proficiency in all AHA courses and has developed instructional materials for this purpose. Use of these materials in an educational course does not represent course sponsorship by the AHA. Any fees charged for such a course, except for a portion of fees needed for AHA course materials, do not represent income to the AHA.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
         
         <!-- Alternative Contact Methods -->
@@ -92,7 +105,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 import { useSiteConfig } from '~/composables/useSiteConfig.js'
 import { useSquareBooking } from '~/composables/useSquareBooking.js'
 

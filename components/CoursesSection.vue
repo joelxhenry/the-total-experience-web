@@ -237,6 +237,21 @@
                 />
               </div>
             </div>
+
+            <!-- AHA Disclaimer for Course Registration -->
+            <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-600">
+              <div class="bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-lg p-4">
+                <div class="flex items-start">
+                  <i class="pi pi-info-circle text-gray-600 dark:text-gray-400 mt-1 mr-3"></i>
+                  <div class="text-xs text-gray-700 dark:text-gray-300">
+                    <p class="font-semibold mb-1">American Heart Association Notice</p>
+                    <p class="leading-relaxed">
+                      The American Heart Association strongly promotes knowledge and proficiency in all AHA courses and has developed instructional materials for this purpose. Use of these materials in an educational course does not represent course sponsorship by the AHA. Any fees charged for such a course, except for a portion of fees needed for AHA course materials, do not represent income to the AHA.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
