@@ -61,7 +61,7 @@ function renderInviteHtml(params: InviteEmailParams): string {
                 </h1>
                 <p style="margin:0 0 16px 0;font-size:16px;line-height:1.6;color:#334155;">${greeting}</p>
                 <p style="margin:0 0 16px 0;font-size:16px;line-height:1.6;color:#334155;">
-                  Thank you for training with The Total Experience. We would love to hear about your experience.
+                  Thank you for training with The Total Educational Experience. We would love to hear about your experience.
                 </p>
                 <p style="margin:0 0 24px 0;font-size:16px;line-height:1.6;color:#334155;">
                   Use the secure link below to leave a review. It expires in 14 days and can only be used once.
@@ -89,14 +89,14 @@ function renderInviteHtml(params: InviteEmailParams): string {
             <tr>
               <td style="background-color:#f8fafc;border-top:1px solid #e2e8f0;padding:20px 28px;">
                 <p style="margin:0;font-size:12px;line-height:1.5;color:#64748b;">
-                  You're receiving this email because you completed training with The Total Experience.
+                  You're receiving this email because you completed training with The Total Educational Experience.
                   If you didn't expect this, you can safely ignore it.
                 </p>
               </td>
             </tr>
           </table>
           <p style="margin:16px 0 0 0;font-size:12px;color:#94a3b8;">
-            &copy; ${new Date().getFullYear()} The Total Experience
+            &copy; ${new Date().getFullYear()} The Total Educational Experience
           </p>
         </td>
       </tr>
@@ -112,18 +112,18 @@ export async function sendInviteEmail(params: InviteEmailParams): Promise<void> 
   const text = [
     greeting,
     '',
-    'Thank you for training with The Total Experience. We would love to hear about your experience.',
+    'Thank you for training with The Total Educational Experience. We would love to hear about your experience.',
     '',
     'Please use the secure link below to leave a review. It will expire in 14 days and can only be used once:',
     params.reviewUrl,
     '',
-    '— The Total Experience'
+    '— The Total Educational Experience'
   ].join('\n')
 
   const html = renderInviteHtml(params)
 
-  const subject = 'Share your experience with The Total Experience'
-  const from = cfg.mailFrom || 'The Total Experience <onboarding@resend.dev>'
+  const subject = 'Share your experience with The Total Educational Experience'
+  const from = cfg.mailFrom || 'The Total Educational Experience <onboarding@resend.dev>'
 
   const client = getClient()
   if (!client) {
