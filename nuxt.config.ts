@@ -16,6 +16,20 @@ export default defineNuxtConfig({
       routes: ['/']
     }
   },
+
+  runtimeConfig: {
+    adminPassword: process.env.ADMIN_PASSWORD || '',
+    adminSessionSecret: process.env.ADMIN_SESSION_SECRET || '',
+    smtpHost: process.env.SMTP_HOST || '',
+    smtpPort: process.env.SMTP_PORT || '',
+    smtpSecure: process.env.SMTP_SECURE || '',
+    smtpUser: process.env.SMTP_USER || '',
+    smtpPass: process.env.SMTP_PASS || '',
+    mailFrom: process.env.MAIL_FROM || '',
+    public: {
+      siteUrl: process.env.SITE_URL || ''
+    }
+  },
   
   app: {
     head: {
