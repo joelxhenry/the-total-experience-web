@@ -1,46 +1,19 @@
 <template>
-  <section class="py-16 bg-gray-50 dark:bg-gray-800">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800 dark:text-white">
+  <section class="py-20 md:py-28 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-7xl mx-auto px-6">
+      <RevealOnScroll as="h2" class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800 dark:text-white">
         Why Choose Our Training?
-      </h2>
+      </RevealOnScroll>
       <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        <Card class="text-center shadow-lg hover:shadow-xl transition-shadow bg-white dark:bg-gray-800 border dark:border-gray-600">
-          <template #content>
-            <div class="p-6">
-              <i class="pi pi-user text-4xl text-primary-600 dark:text-primary-400 mb-4"></i>
-              <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Expert Instructor</h3>
-              <p class="text-gray-600 dark:text-gray-300">
-                Learn from an experienced registered nurse with years of clinical and teaching experience.
-              </p>
-            </div>
-          </template>
-        </Card>
-
-        <Card class="text-center shadow-lg hover:shadow-xl transition-shadow bg-white dark:bg-gray-800 border dark:border-gray-600">
-          <template #content>
-            <div class="p-6">
-              <i class="pi pi-map-marker text-4xl text-primary-600 dark:text-primary-400 mb-4"></i>
-              <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Mobile Training</h3>
-              <p class="text-gray-600 dark:text-gray-300">
-                Convenient mobile training - we can come to you at your workplace or preferred location.
-              </p>
-            </div>
-          </template>
-        </Card>
-
-
-        <Card class="text-center shadow-lg hover:shadow-xl transition-shadow bg-white dark:bg-gray-800 border dark:border-gray-600">
-          <template #content>
-            <div class="p-6">
-              <i class="pi pi-check-circle text-4xl text-primary-600 dark:text-primary-400 mb-4"></i>
-              <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Certified Training</h3>
-              <p class="text-gray-600 dark:text-gray-300">
-                Official American Heart Association certification upon successful completion.
-              </p>
-            </div>
-          </template>
-        </Card>
+        <UiCard icon="pi-user" title="Expert Instructor">
+          Learn from an experienced registered nurse with years of clinical and teaching experience.
+        </UiCard>
+        <UiCard icon="pi-map-marker" title="Mobile Training">
+          Convenient mobile training — we can come to you at your workplace or preferred location.
+        </UiCard>
+        <UiCard icon="pi-check-circle" title="Certified Training">
+          Official American Heart Association certification upon successful completion.
+        </UiCard>
       </div>
     </div>
   </section>

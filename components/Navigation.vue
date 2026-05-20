@@ -21,15 +21,18 @@
       <!-- Desktop Navigation Pills -->
       <div class="floating-nav__desktop">
         <div class="nav-pills">
-          <div 
-            v-for="item in props.navItems" 
+          <button
+            v-for="item in props.navItems"
             :key="item.id"
+            type="button"
             class="nav-pill"
             :class="{ 'nav-pill--active': props.activeSection === item.id }"
+            :aria-current="props.activeSection === item.id ? 'page' : undefined"
             @click="scrollToSection(item.id)"
           >
             <span class="nav-pill__label">{{ item.label }}</span>
-          </div>
+            <span class="nav-pill__indicator" aria-hidden="true"></span>
+          </button>
         </div>
 
         <!-- Floating CTA Button -->
@@ -49,8 +52,11 @@
 
       <!-- Mobile Navigation -->
       <div class="floating-nav__mobile">
-        <Button 
+        <Button
           :icon="props.mobileMenuOpen ? 'pi pi-times' : 'pi pi-bars'"
+          :aria-label="props.mobileMenuOpen ? 'Close menu' : 'Open menu'"
+          :aria-expanded="props.mobileMenuOpen"
+          aria-controls="mobile-menu"
           class="mobile-toggle"
           @click="toggleMobileMenu"
         />
@@ -58,8 +64,8 @@
     </div>
 
     <!-- Mobile Menu Overlay -->
-    <div v-if="props.mobileMenuOpen" class="mobile-overlay" @click="toggleMobileMenu">
-      <div class="mobile-menu" @click.stop>
+    <div v-if="props.mobileMenuOpen" class="mobile-overlay" role="dialog" aria-modal="true" aria-label="Site menu" @click="toggleMobileMenu">
+      <div id="mobile-menu" class="mobile-menu" @click.stop>
         <div class="mobile-menu__header">
           <div class="mobile-logo">
             <div class="mobile-logo-container">
@@ -77,16 +83,17 @@
         </div>
         
         <div class="mobile-menu__nav">
-          <div 
-            v-for="item in props.navItems" 
+          <button
+            v-for="item in props.navItems"
             :key="item.id"
+            type="button"
             class="mobile-nav-item"
             @click="scrollToSection(item.id)"
           >
-            <i :class="item.icon" class="mobile-nav-item__icon"></i>
+            <i :class="item.icon" class="mobile-nav-item__icon" aria-hidden="true"></i>
             <span class="mobile-nav-item__label">{{ item.label }}</span>
-            <i class="pi pi-chevron-right mobile-nav-item__arrow"></i>
-          </div>
+            <i class="pi pi-chevron-right mobile-nav-item__arrow" aria-hidden="true"></i>
+          </button>
         </div>
         
         <div class="mobile-menu__cta">
@@ -152,9 +159,13 @@ const openSquareBooking = () => {
 }
 
 .floating-nav__container {
-  @apply bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 dark:border-gray-700/20 px-4 py-3 flex items-center justify-between transition-colors duration-300;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2);
+  @apply bg-white/75 dark:bg-gray-900/70 backdrop-blur-2xl rounded-2xl shadow-xl border border-white/40 dark:border-gray-700/40 px-4 py-3 flex items-center justify-between transition-all duration-300;
+  box-shadow: 0 16px 40px -16px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(255, 255, 255, 0.25);
   overflow: visible;
+}
+
+.floating-nav--scrolled .floating-nav__container {
+  @apply bg-white/90 dark:bg-gray-900/85 shadow-2xl;
 }
 
 /* Logo Styles */
@@ -211,11 +222,15 @@ const openSquareBooking = () => {
 }
 
 .nav-pill {
-  @apply relative px-4 py-2 rounded-lg cursor-pointer transition-all duration-300 text-gray-700 dark:text-gray-300;
+  @apply relative px-4 py-2 rounded-lg cursor-pointer transition-all duration-300 text-gray-700 dark:text-gray-300 bg-transparent border-0 font-medium;
 }
 
 .nav-pill:hover {
   @apply bg-white/80 dark:bg-gray-600/80 shadow-md transform scale-105;
+}
+
+.nav-pill:focus-visible {
+  @apply outline-none ring-2 ring-primary-500/70 ring-offset-2 ring-offset-white/0 dark:ring-offset-gray-900/0;
 }
 
 .nav-pill--active {
@@ -224,6 +239,16 @@ const openSquareBooking = () => {
 
 .nav-pill__label {
   @apply font-medium text-sm;
+}
+
+.nav-pill__indicator {
+  @apply absolute left-1/2 -bottom-1 h-1 w-1 -translate-x-1/2 rounded-full bg-primary-500 opacity-0 transition-all duration-300;
+  transform: translate(-50%, 4px) scale(0.6);
+}
+
+.nav-pill--active .nav-pill__indicator {
+  @apply opacity-100;
+  transform: translate(-50%, 0) scale(1);
 }
 
 
@@ -326,7 +351,11 @@ const openSquareBooking = () => {
 }
 
 .mobile-nav-item {
-  @apply flex items-center space-x-3 p-3 rounded-xl cursor-pointer transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-700;
+  @apply flex items-center space-x-3 p-3 rounded-xl cursor-pointer transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-700 w-full text-left bg-transparent border-0;
+}
+
+.mobile-nav-item:focus-visible {
+  @apply outline-none ring-2 ring-primary-500/70 ring-offset-2 ring-offset-white dark:ring-offset-gray-800;
 }
 
 .mobile-nav-item__icon {

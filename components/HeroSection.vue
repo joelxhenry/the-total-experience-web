@@ -4,6 +4,10 @@
     <div class="absolute inset-0 z-0">
       <div class="absolute inset-0 bg-gradient-to-br from-primary-600/90 via-primary-700/80 to-primary-800/90"></div>
       <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/20 via-transparent to-green-600/20 animate-pulse"></div>
+      <!-- Gradient mesh -->
+      <div class="hero-mesh" aria-hidden="true"></div>
+      <!-- Subtle noise texture -->
+      <div class="hero-noise" aria-hidden="true"></div>
     </div>
 
     <!-- Background Image with Parallax Effect -->
@@ -26,7 +30,7 @@
     </div>
     
     <!-- Main Content -->
-    <div class="relative z-10 container mx-auto px-4 pt-32 pb-16 lg:pt-40 lg:pb-24 flex items-center min-h-screen">
+    <div class="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-16 lg:pt-40 lg:pb-24 flex items-center min-h-screen">
       <div class="max-w-4xl mx-auto">
         <div class="text-center">
             <!-- Animated Badge -->
@@ -146,7 +150,32 @@ defineEmits(['open-square-booking'])
 <style scoped>
 /* Hero Section Styles */
 #hero {
-  background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 50%, #15803d 100%);
+}
+
+/* Gradient mesh — modern multi-radial overlay */
+.hero-mesh {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 50% at 12% 20%, rgba(74, 222, 128, 0.55) 0%, rgba(74, 222, 128, 0) 60%),
+    radial-gradient(50% 45% at 88% 18%, rgba(59, 130, 246, 0.35) 0%, rgba(59, 130, 246, 0) 60%),
+    radial-gradient(70% 60% at 78% 92%, rgba(20, 83, 45, 0.55) 0%, rgba(20, 83, 45, 0) 65%),
+    radial-gradient(55% 50% at 25% 95%, rgba(34, 197, 94, 0.35) 0%, rgba(34, 197, 94, 0) 60%);
+  mix-blend-mode: screen;
+  opacity: 0.85;
+}
+
+/* Subtle noise — improves perceived depth without a raster asset */
+.hero-noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size: 160px 160px;
 }
 
 /* Animation Keyframes */
@@ -202,8 +231,8 @@ defineEmits(['open-square-booking'])
 }
 
 @keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(16, 185, 129, 0.6); }
+  0%, 100% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(34, 197, 94, 0.6); }
 }
 
 /* Animation Classes */
@@ -261,7 +290,7 @@ defineEmits(['open-square-booking'])
   left: 10%;
   width: 60px;
   height: 60px;
-  background: linear-gradient(45deg, #10b981, #34d399);
+  background: linear-gradient(45deg, #22c55e, #4ade80);
   border-radius: 50%;
   animation-delay: 0s;
 }
@@ -306,19 +335,30 @@ defineEmits(['open-square-booking'])
   animation-delay: -7s;
 }
 
-/* CTA Buttons */
+/* CTA Buttons — clearer primary vs secondary hierarchy */
 .hero-cta-primary {
-  @apply bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 rounded-xl shadow-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-green-500/25 !important;
+  @apply bg-white text-primary-700 hover:bg-primary-50 px-8 py-4 rounded-2xl shadow-2xl transition-all duration-300 transform hover:scale-[1.03] !important;
   animation: pulseGlow 3s infinite;
   border: none !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
   font-size: 1.1rem !important;
 }
 
+.hero-cta-primary:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.9) !important;
+  outline-offset: 3px;
+}
+
 .hero-cta-secondary {
-  @apply bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-8 py-4 rounded-xl transition-all duration-300 hover:bg-white/20 hover:border-white/50 transform hover:scale-105;
+  @apply bg-transparent border border-white/40 text-white px-8 py-4 rounded-2xl transition-all duration-300 hover:bg-white/10 hover:border-white/70;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
+  backdrop-filter: blur(4px);
+}
+
+.hero-cta-secondary:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 3px;
 }
 
 

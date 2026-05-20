@@ -1,5 +1,8 @@
 <template>
   <div class="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <!-- Skip link for keyboard users -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
     <!-- Navigation Component -->
     <Navigation :is-scrolled="isScrolled" :nav-hidden="navHidden" :active-section="activeSection"
       :mobile-menu-open="mobileMenuOpen" :cta-hovered="ctaHovered" :nav-items="navItems"
@@ -9,107 +12,31 @@
     <!-- Floating Actions Component -->
     <FloatingActions :show-scroll-top="showScrollTop" />
 
-    <!-- Hero Section Component -->
-    <HeroSection @open-square-booking="openSquareBooking" />
+    <main id="main">
+      <!-- Hero Section Component -->
+      <HeroSection @open-square-booking="openSquareBooking" />
 
-    <!-- Courses Section Component -->
-    <CoursesSection @open-square-booking="openSquareBooking" />
+      <!-- Courses Section Component -->
+      <CoursesSection @open-square-booking="openSquareBooking" />
 
-    <!-- Benefits Section Component -->
-    <BenefitsSection />
+      <!-- Benefits Section Component -->
+      <BenefitsSection />
 
-    <!-- Instructor Section Component -->
-    <InstructorSection @open-square-booking="openSquareBooking" />
+      <!-- Instructor Section Component -->
+      <InstructorSection @open-square-booking="openSquareBooking" />
 
-    <!-- Training Section Component -->
-    <TrainingSection @open-square-booking="openSquareBooking" />
+      <!-- Testimonials Section Component -->
+      <TestimonialsSection />
+
+      <!-- Training Section Component -->
+      <TrainingSection @open-square-booking="openSquareBooking" />
+    </main>
 
     <!-- Square Booking Modal -->
     <SquareBookingModal :is-open="isBookingModalOpen" @close="closeBookingModal" />
 
     <!-- Footer -->
-    <footer class="bg-gray-800 dark:bg-gray-900 text-white py-12">
-      <div class="container mx-auto px-4 lg:px-20">
-        <div class="grid md:grid-cols-4 gap-8 mb-8">
-
-          <!-- Logo and Company Info -->
-          <div class="md:col-span-2">
-            <div class="flex items-center mb-4">
-              <img :src="config.getFooterLogo().src" :alt="config.getFooterLogo().alt"
-                class="h-20 w-20 mr-4 object-contain rounded-lg p-1" @error="$event.target.style.display = 'none'" />
-              <div>
-                <h3 class="text-xl font-bold text-white">{{ config.siteName }}</h3>
-                <p class="text-gray-400 text-sm">{{ config.tagline }}</p>
-              </div>
-            </div>
-            <p class="text-gray-300 mb-4 max-w-md">
-              {{ config.description }}
-            </p>
-            <div class="flex space-x-4">
-              <a v-if="config.social.facebook" :href="config.social.facebook" target="_blank" rel="noopener noreferrer"
-                class="text-gray-400 hover:text-white transition-colors">
-                <i class="pi pi-facebook text-xl"></i>
-              </a>
-              <a v-if="config.social.twitter" :href="config.social.twitter" target="_blank" rel="noopener noreferrer"
-                class="text-gray-400 hover:text-white transition-colors">
-                <i class="pi pi-twitter text-xl"></i>
-              </a>
-              <a v-if="config.social.linkedin" :href="config.social.linkedin" target="_blank" rel="noopener noreferrer"
-                class="text-gray-400 hover:text-white transition-colors">
-                <i class="pi pi-linkedin text-xl"></i>
-              </a>
-              <a v-if="config.social.instagram" :href="config.social.instagram" target="_blank"
-                rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">
-                <i class="pi pi-instagram text-xl"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Contact Information -->
-          <div>
-            <h4 class="text-lg font-semibold text-white mb-4">Contact</h4>
-            <div class="space-y-2 text-gray-300">
-              <p class="flex items-center">
-                <i class="pi pi-phone mr-2"></i>
-                <a :href="config.contact.phoneLink" class="hover:text-white transition-colors">{{ config.contact.phone
-                  }}</a>
-              </p>
-              <p class="flex items-center">
-                <i class="pi pi-envelope mr-2"></i>
-                <a :href="config.contact.emailLink" class="hover:text-white transition-colors">{{ config.contact.email
-                  }}</a>
-              </p>
-              <p class="flex items-start">
-                <i class="pi pi-map-marker mr-2 mt-1"></i>
-                <span>{{ config.getFullAddress() }}</span>
-              </p>
-            </div>
-          </div>
-
-          <!-- Services -->
-          <div>
-            <h4 class="text-lg font-semibold text-white mb-4">Services</h4>
-            <ul class="space-y-2 text-gray-300">
-              <li><a href="#courses" class="hover:text-white transition-colors">BLS Training</a></li>
-              <li><a href="#courses" class="hover:text-white transition-colors">ACLS Training</a></li>
-              <li><a href="#training" class="hover:text-white transition-colors">Mobile Training</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Bottom Footer -->
-        <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p class="text-gray-400 text-sm mb-4 md:mb-0">
-            © 2025 {{ config.business.legalName }}. Professional medical training by certified instructors.
-          </p>
-          <div v-if="config.business.license" class="flex items-center space-x-4 text-gray-400 text-sm">
-            <span>Licensed: {{ config.business.license }}</span>
-            <span class="hidden md:inline">|</span>
-            <span>{{ config.business.certifications[0] }}</span>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <SiteFooter @open-square-booking="openSquareBooking" />
   </div>
 </template>
 
@@ -121,6 +48,7 @@ import CoursesSection from '~/components/CoursesSection.vue'
 import BenefitsSection from '~/components/BenefitsSection.vue'
 import InstructorSection from '~/components/InstructorSection.vue'
 import TrainingSection from '~/components/TrainingSection.vue'
+import TestimonialsSection from '~/components/TestimonialsSection.vue'
 import FloatingActions from '~/components/FloatingActions.vue'
 import SquareBookingModal from '~/components/SquareBookingModal.vue'
 import { useSiteConfig } from '~/composables/useSiteConfig.js'

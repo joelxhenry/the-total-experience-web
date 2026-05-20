@@ -1,9 +1,9 @@
 <template>
-  <section id="instructor" class="py-16 bg-white dark:bg-gray-900">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800 dark:text-white">
+  <section id="instructor" class="py-20 md:py-28 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-6">
+      <RevealOnScroll as="h2" class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800 dark:text-white">
         Meet Your {{ config.instructors.length > 1 ? 'Instructors' : 'Instructor' }}
-      </h2>
+      </RevealOnScroll>
       
       <div class="max-w-7xl mx-auto">
         <!-- Instructor Navigation (dots) - Only show if multiple instructors -->

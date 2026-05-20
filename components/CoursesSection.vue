@@ -1,9 +1,9 @@
 <template>
-  <section id="courses" class="py-16 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-800 dark:to-gray-700">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800 dark:text-white">
+  <section id="courses" class="py-20 md:py-28 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-800 dark:to-gray-700">
+    <div class="max-w-7xl mx-auto px-6">
+      <RevealOnScroll as="h2" class="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800 dark:text-white">
         Understanding BLS & ACLS
-      </h2>
+      </RevealOnScroll>
       <p class="text-center text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto">
         Discover the life-saving skills that make a difference in emergency situations. Click on each course to explore what you'll learn.
       </p>

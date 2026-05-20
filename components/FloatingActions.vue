@@ -1,21 +1,31 @@
 <template>
   <div class="floating-actions">
     <!-- Quick Call Button -->
-    <div class="fab fab--call" @click="callInstructor" title="Call Now">
-      <i class="pi pi-phone"></i>
-      <div class="fab__ripple"></div>
-    </div>
-    
-    <!-- Scroll to Top -->
-    <div 
-      class="fab fab--scroll" 
-      :class="{ 'fab--visible': showScrollTop }"
-      @click="scrollToTop"
-      title="Back to Top"
+    <button
+      type="button"
+      class="fab fab--call"
+      aria-label="Call instructor"
+      title="Call Now"
+      @click="callInstructor"
     >
-      <i class="pi pi-arrow-up"></i>
-      <div class="fab__ripple"></div>
-    </div>
+      <i class="pi pi-phone" aria-hidden="true"></i>
+      <span class="fab__ripple" aria-hidden="true"></span>
+    </button>
+
+    <!-- Scroll to Top -->
+    <button
+      type="button"
+      class="fab fab--scroll"
+      :class="{ 'fab--visible': showScrollTop }"
+      :aria-hidden="!showScrollTop"
+      :tabindex="showScrollTop ? 0 : -1"
+      aria-label="Back to top"
+      title="Back to Top"
+      @click="scrollToTop"
+    >
+      <i class="pi pi-arrow-up" aria-hidden="true"></i>
+      <span class="fab__ripple" aria-hidden="true"></span>
+    </button>
   </div>
 </template>
 
@@ -59,7 +69,11 @@ onUnmounted(() => {
 }
 
 .fab {
-  @apply w-14 h-14 bg-white shadow-lg rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 relative overflow-hidden;
+  @apply w-14 h-14 bg-white shadow-lg rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 relative overflow-hidden border-0 p-0;
+}
+
+.fab:focus-visible {
+  @apply outline-none ring-2 ring-primary-400 ring-offset-2 ring-offset-white dark:ring-offset-gray-900;
 }
 
 .fab:hover {

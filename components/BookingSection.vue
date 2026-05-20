@@ -1,8 +1,8 @@
 <template>
-  <section id="booking" class="py-16 bg-white dark:bg-gray-900 relative">
+  <section id="booking" class="py-20 md:py-28 bg-white dark:bg-gray-900 relative">
     <!-- Mobile Training Notice -->
     <div class="py-12 bg-primary-50 dark:bg-gray-800 mb-16">
-      <div class="container mx-auto px-4">
+      <div class="max-w-7xl mx-auto px-6">
         <div class="max-w-4xl mx-auto text-center">
           <h3 class="text-2xl font-bold mb-4 text-primary-800 dark:text-primary-300">
             <i class="pi pi-car mr-2"></i>
@@ -27,10 +27,10 @@
       />
     </div>
     
-    <div class="relative z-10 container mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 text-gray-800 dark:text-white">
+    <div class="relative z-10 max-w-7xl mx-auto px-6">
+      <RevealOnScroll as="h2" class="text-3xl md:text-4xl font-bold text-center mb-8 text-gray-800 dark:text-white">
         Ready to Get Certified?
-      </h2>
+      </RevealOnScroll>
       <div class="max-w-4xl mx-auto text-center">
         <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
           Schedule your BLS or ACLS training session today. Choose a time that works for you and your team.
@@ -85,7 +85,7 @@
         </div>
 
         <!-- Contact Information -->
-        <div class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm p-8 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600">
+        <div class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-600">
           <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-white">Questions? Contact Us</h3>
           <p class="text-gray-600 dark:text-gray-300 mb-2">
             <i class="pi pi-phone mr-2"></i>
