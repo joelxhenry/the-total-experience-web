@@ -1,27 +1,17 @@
-import nodemailer, { type Transporter } from 'nodemailer'
+import { Resend } from 'resend'
 
-let _transporter: Transporter | null = null
-let _transporterChecked = false
+let _client: Resend | null = null
+let _checked = false
 
-function getTransporter(): Transporter | null {
-  if (_transporterChecked) return _transporter
-  _transporterChecked = true
+function getClient(): Resend | null {
+  if (_checked) return _client
+  _checked = true
 
   const cfg = useRuntimeConfig()
-  if (!cfg.smtpHost || !cfg.smtpUser || !cfg.smtpPass) {
-    return null
-  }
+  if (!cfg.resendApiKey) return null
 
-  _transporter = nodemailer.createTransport({
-    host: cfg.smtpHost,
-    port: Number(cfg.smtpPort || 587),
-    secure: String(cfg.smtpSecure).toLowerCase() === 'true',
-    auth: {
-      user: cfg.smtpUser,
-      pass: cfg.smtpPass
-    }
-  })
-  return _transporter
+  _client = new Resend(cfg.resendApiKey)
+  return _client
 }
 
 export interface InviteEmailParams {
@@ -54,11 +44,11 @@ export async function sendInviteEmail(params: InviteEmailParams): Promise<void> 
   `
 
   const subject = 'Share your experience with The Total Experience'
-  const from = cfg.mailFrom || 'no-reply@thetotalexperience.local'
+  const from = cfg.mailFrom || 'The Total Experience <onboarding@resend.dev>'
 
-  const transporter = getTransporter()
-  if (!transporter) {
-    console.log('[mail:console-fallback] SMTP not configured — would send invite email:')
+  const client = getClient()
+  if (!client) {
+    console.log('[mail:console-fallback] RESEND_API_KEY not configured — would send invite email:')
     console.log(`  From: ${from}`)
     console.log(`  To:   ${params.to}`)
     console.log(`  Subject: ${subject}`)
@@ -66,5 +56,18 @@ export async function sendInviteEmail(params: InviteEmailParams): Promise<void> 
     return
   }
 
-  await transporter.sendMail({ from, to: params.to, subject, text, html })
+  const { error } = await client.emails.send({
+    from,
+    to: params.to,
+    subject,
+    text,
+    html
+  })
+
+  if (error) {
+    throw createError({
+      statusCode: 502,
+      statusMessage: `Resend send failed: ${error.message || 'unknown error'}`
+    })
+  }
 }

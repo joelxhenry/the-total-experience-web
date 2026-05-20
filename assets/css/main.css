@@ -10,6 +10,11 @@ h1, h2, h3, h4, h5, h6,
   letter-spacing: -0.01em;
 }
 
+/* Offset in-page scroll targets so they don't hide under the floating nav */
+section[id] {
+  scroll-margin-top: 6rem;
+}
+
 /* A11y — visible focus ring for keyboard users */
 :focus-visible {
   outline: 2px solid theme('colors.primary.500');

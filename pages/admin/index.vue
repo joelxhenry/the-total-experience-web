@@ -34,6 +34,7 @@ const inviteSubmitting = ref(false)
 const inviteError = ref<string | null>(null)
 
 const toast = useToastSafe()
+const adminFetch = useAdminFetch()
 
 function formatDate(ms: number | null): string {
   if (!ms) return '—'
@@ -49,7 +50,7 @@ function statusSeverity(status: Invite['status']): string {
 async function loadInvites() {
   invitesLoading.value = true
   try {
-    invites.value = await $fetch<Invite[]>('/api/admin/invites')
+    invites.value = await adminFetch<Invite[]>('/api/admin/invites')
   } catch (err) {
     toast?.add({ severity: 'error', summary: 'Failed to load invites', life: 4000 })
   } finally {
@@ -60,7 +61,7 @@ async function loadInvites() {
 async function loadReviews() {
   reviewsLoading.value = true
   try {
-    reviews.value = await $fetch<Review[]>('/api/admin/reviews')
+    reviews.value = await adminFetch<Review[]>('/api/admin/reviews')
   } catch (err) {
     toast?.add({ severity: 'error', summary: 'Failed to load reviews', life: 4000 })
   } finally {
@@ -73,7 +74,7 @@ async function createInvite() {
   inviteError.value = null
   inviteSubmitting.value = true
   try {
-    await $fetch('/api/admin/invites', {
+    await adminFetch('/api/admin/invites', {
       method: 'POST',
       body: {
         email: inviteEmail.value.trim(),
@@ -94,7 +95,7 @@ async function createInvite() {
 
 async function resendInvite(invite: Invite) {
   try {
-    await $fetch('/api/admin/invites', {
+    await adminFetch('/api/admin/invites', {
       method: 'POST',
       body: { email: invite.email, customer_name: invite.customer_name }
     })
@@ -109,7 +110,7 @@ async function togglePublished(review: Review, next: boolean) {
   const previous = review.is_published
   review.is_published = next
   try {
-    await $fetch(`/api/admin/reviews/${review.id}`, {
+    await adminFetch(`/api/admin/reviews/${review.id}`, {
       method: 'PATCH',
       body: { is_published: next }
     })
@@ -127,7 +128,7 @@ async function togglePublished(review: Review, next: boolean) {
 async function deleteReview(review: Review) {
   if (!confirm(`Delete review by ${review.name}? This cannot be undone.`)) return
   try {
-    await $fetch(`/api/admin/reviews/${review.id}`, { method: 'DELETE' })
+    await adminFetch(`/api/admin/reviews/${review.id}`, { method: 'DELETE' })
     reviews.value = reviews.value.filter((r) => r.id !== review.id)
     toast?.add({ severity: 'success', summary: 'Review deleted', life: 2500 })
   } catch (err) {
@@ -137,13 +138,15 @@ async function deleteReview(review: Review) {
 
 async function logout() {
   try {
-    await $fetch('/api/admin/logout', { method: 'POST' })
+    await adminFetch('/api/admin/logout', { method: 'POST' })
   } finally {
     await navigateTo('/admin/login')
   }
 }
 
-onMounted(() => {
+onMounted(async () => {
+  // Ensure a fresh CSRF cookie is present before any mutating call.
+  try { await $fetch('/api/admin/session') } catch { /* ignore */ }
   loadInvites()
   loadReviews()
 })

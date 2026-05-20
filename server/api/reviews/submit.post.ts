@@ -2,6 +2,8 @@ import { z } from 'zod'
 import { randomUUID } from 'node:crypto'
 import { useDb } from '../../db'
 import { hashToken } from '../../utils/tokens'
+import { enforceRateLimit } from '../../utils/rateLimit'
+import { sanitizeComment, sanitizeName } from '../../utils/sanitize'
 
 const BodySchema = z.object({
   token: z.string().min(1).max(256),
@@ -17,6 +19,8 @@ interface InviteRow {
 }
 
 export default defineEventHandler(async (event) => {
+  enforceRateLimit(event, { key: 'reviews:submit', capacity: 5, windowMs: 60_000 })
+
   const body = await readBody(event)
   const parsed = BodySchema.safeParse(body)
   if (!parsed.success) {
@@ -27,7 +31,12 @@ export default defineEventHandler(async (event) => {
     })
   }
 
-  const { token, name, rating, comment } = parsed.data
+  const { token, rating } = parsed.data
+  const name = sanitizeName(parsed.data.name)
+  const comment = sanitizeComment(parsed.data.comment)
+  if (!name || !comment) {
+    throw createError({ statusCode: 400, statusMessage: 'Invalid review submission' })
+  }
   const db = useDb()
   const now = Date.now()
   const tokenHash = hashToken(token)
