@@ -2,11 +2,22 @@ import { siteConfig } from './config/site.js'
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/google-fonts'],
+
+  googleFonts: {
+    families: {
+      Sora: [400, 500, 600, 700, 800],
+      Inter: [400, 500, 600, 700]
+    },
+    display: 'swap',
+    preconnect: true,
+    download: true
+  },
   css: [
     'primevue/resources/themes/aura-light-green/theme.css',
     'primevue/resources/primevue.css',
-    'primeicons/primeicons.css'
+    'primeicons/primeicons.css',
+    '~/assets/css/main.css'
   ],
   build: {
     transpile: ['primevue']
@@ -14,6 +25,19 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       routes: ['/']
+    }
+  },
+
+  routeRules: {
+    '/api/reviews/public': { cache: { maxAge: 60 } }
+  },
+
+  vite: {
+    server: {
+      hmr: {
+        host: '72.62.165.152',
+        protocol: 'ws'
+      }
     }
   },
 
