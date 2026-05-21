@@ -11,12 +11,11 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxtjs/google-fonts": "^3.2.0",
-    "@types/better-sqlite3": "^7.6.13",
     "nuxt": "^3.8.0"
   },
   "dependencies": {
     "@nuxtjs/tailwindcss": "^6.8.4",
-    "better-sqlite3": "^12.10.0",
+    "@supabase/supabase-js": "^2.45.0",
     "primeicons": "^6.0.1",
     "primevue": "^3.45.0",
     "resend": "^6.12.3",

@@ -1,26 +1,32 @@
--- Reviews backend schema. Idempotent: safe to re-run on every boot.
+-- Postgres schema for Supabase. Run once in the Supabase SQL editor.
+-- Timestamps are epoch milliseconds (bigint) to match the existing API shape.
 
-CREATE TABLE IF NOT EXISTS invites (
-  id TEXT PRIMARY KEY,
-  email TEXT NOT NULL,
-  customer_name TEXT,
-  token_hash TEXT NOT NULL UNIQUE,
-  created_at INTEGER NOT NULL,
-  expires_at INTEGER NOT NULL,
-  used_at INTEGER
+create table if not exists invites (
+  id text primary key,
+  email text not null,
+  customer_name text,
+  token_hash text not null unique,
+  created_at bigint not null,
+  expires_at bigint not null,
+  used_at bigint
 );
 
-CREATE INDEX IF NOT EXISTS idx_invites_token_hash ON invites(token_hash);
+create index if not exists idx_invites_token_hash on invites(token_hash);
 
-CREATE TABLE IF NOT EXISTS reviews (
-  id TEXT PRIMARY KEY,
-  invite_id TEXT NOT NULL REFERENCES invites(id) ON DELETE CASCADE,
-  name TEXT NOT NULL,
-  rating INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 5),
-  comment TEXT NOT NULL,
-  created_at INTEGER NOT NULL,
-  is_published INTEGER NOT NULL DEFAULT 0,
-  published_at INTEGER
+create table if not exists reviews (
+  id text primary key,
+  invite_id text not null references invites(id) on delete cascade,
+  name text not null,
+  rating integer not null check (rating between 1 and 5),
+  comment text not null,
+  created_at bigint not null,
+  is_published boolean not null default false,
+  published_at bigint
 );
 
-CREATE INDEX IF NOT EXISTS idx_reviews_is_published ON reviews(is_published);
+create index if not exists idx_reviews_is_published on reviews(is_published);
+
+-- The server uses the service role key and bypasses RLS, but enable RLS with
+-- no policies so anon/auth keys can't reach these tables directly.
+alter table invites enable row level security;
+alter table reviews enable row level security;

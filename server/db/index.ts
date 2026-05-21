@@ -1,22 +1,22 @@
-import { readFileSync, mkdirSync } from 'node:fs'
-import { dirname, resolve } from 'node:path'
-import Database from 'better-sqlite3'
+import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 
-let _db: Database.Database | null = null
+let _client: SupabaseClient | null = null
 
-export function useDb(): Database.Database {
-  if (_db) return _db
+export function useDb(): SupabaseClient {
+  if (_client) return _client
 
-  const dbPath = resolve(process.cwd(), 'server/data/reviews.db')
-  mkdirSync(dirname(dbPath), { recursive: true })
+  const cfg = useRuntimeConfig()
+  const url = cfg.supabaseUrl
+  const key = cfg.supabaseServiceKey
+  if (!url || !key) {
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Supabase is not configured (SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY missing)'
+    })
+  }
 
-  const db = new Database(dbPath)
-  db.pragma('journal_mode = WAL')
-  db.pragma('foreign_keys = ON')
-
-  const schema = readFileSync(resolve(process.cwd(), 'server/db/schema.sql'), 'utf-8')
-  db.exec(schema)
-
-  _db = db
-  return db
+  _client = createClient(url, key, {
+    auth: { persistSession: false, autoRefreshToken: false }
+  })
+  return _client
 }

@@ -46,6 +46,8 @@ export default defineNuxtConfig({
     adminSessionSecret: process.env.ADMIN_SESSION_SECRET || '',
     resendApiKey: process.env.RESEND_API_KEY || '',
     mailFrom: process.env.MAIL_FROM || '',
+    supabaseUrl: process.env.SUPABASE_URL || '',
+    supabaseServiceKey: process.env.SUPABASE_SERVICE_ROLE_KEY || '',
     public: {
       siteUrl: process.env.SITE_URL || ''
     }

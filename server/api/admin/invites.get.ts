@@ -7,27 +7,29 @@ interface Row {
   created_at: number
   expires_at: number
   used_at: number | null
-  review_id: string | null
+  reviews: { id: string }[] | null
 }
 
 export type InviteStatus = 'submitted' | 'expired' | 'pending'
 
-export default defineEventHandler(() => {
+export default defineEventHandler(async () => {
   const db = useDb()
-  const rows = db
-    .prepare(
-      `SELECT i.id, i.email, i.customer_name, i.created_at, i.expires_at, i.used_at,
-              r.id AS review_id
-         FROM invites i
-         LEFT JOIN reviews r ON r.invite_id = i.id
-        ORDER BY i.created_at DESC`
-    )
-    .all() as Row[]
+  const { data, error } = await db
+    .from('invites')
+    .select('id, email, customer_name, created_at, expires_at, used_at, reviews(id)')
+    .order('created_at', { ascending: false })
 
+  if (error) {
+    console.error('[admin/invites.get] query failed', error)
+    throw createError({ statusCode: 500, statusMessage: 'Failed to load invites' })
+  }
+
+  const rows = (data ?? []) as unknown as Row[]
   const now = Date.now()
   return rows.map((row) => {
+    const hasReview = Array.isArray(row.reviews) && row.reviews.length > 0
     let status: InviteStatus
-    if (row.review_id) status = 'submitted'
+    if (hasReview) status = 'submitted'
     else if (row.expires_at < now) status = 'expired'
     else status = 'pending'
 

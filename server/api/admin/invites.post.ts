@@ -34,10 +34,19 @@ export default defineEventHandler(async (event) => {
   const expiresAt = now + tokenTtlMs()
 
   const db = useDb()
-  db.prepare(
-    `INSERT INTO invites (id, email, customer_name, token_hash, created_at, expires_at, used_at)
-     VALUES (?, ?, ?, ?, ?, ?, NULL)`
-  ).run(id, email, customer_name ?? null, tokenHash, now, expiresAt)
+  const { error } = await db.from('invites').insert({
+    id,
+    email,
+    customer_name: customer_name ?? null,
+    token_hash: tokenHash,
+    created_at: now,
+    expires_at: expiresAt,
+    used_at: null
+  })
+  if (error) {
+    console.error('[admin/invites] insert failed', error)
+    throw createError({ statusCode: 500, statusMessage: 'Failed to create invite' })
+  }
 
   const reviewUrl = `${siteUrl}/review/${token}`
 

@@ -16,14 +16,19 @@ export default defineEventHandler(async (event) => {
   }
 
   const db = useDb()
-  const publish = parsed.data.is_published ? 1 : 0
   const publishedAt = parsed.data.is_published ? Date.now() : null
 
-  const result = db
-    .prepare('UPDATE reviews SET is_published = ?, published_at = ? WHERE id = ?')
-    .run(publish, publishedAt, id)
+  const { data, error } = await db
+    .from('reviews')
+    .update({ is_published: parsed.data.is_published, published_at: publishedAt })
+    .eq('id', id)
+    .select('id')
 
-  if (result.changes !== 1) {
+  if (error) {
+    console.error('[admin/reviews.patch] update failed', error)
+    throw createError({ statusCode: 500, statusMessage: 'Failed to update review' })
+  }
+  if (!data || data.length !== 1) {
     throw createError({ statusCode: 404, statusMessage: 'Review not found' })
   }
 

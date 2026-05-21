@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, statusMessage: 'Invalid token parameter' })
   }
 
-  const result = lookupInviteByToken(parsed.data.token)
+  const result = await lookupInviteByToken(parsed.data.token)
 
   if (!result.ok) {
     if (result.reason === 'not_found') {

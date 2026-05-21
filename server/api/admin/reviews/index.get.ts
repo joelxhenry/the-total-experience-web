@@ -12,27 +12,31 @@ interface ReviewRow {
   rating: number
   comment: string
   created_at: number
-  is_published: number
+  is_published: boolean
   published_at: number | null
 }
 
-export default defineEventHandler((event) => {
+export default defineEventHandler(async (event) => {
   const parsed = QuerySchema.safeParse(getQuery(event))
   if (!parsed.success) {
     throw createError({ statusCode: 400, statusMessage: 'Invalid query' })
   }
 
   const db = useDb()
-  const where = parsed.data.published !== undefined ? 'WHERE is_published = ?' : ''
-  const sql = `SELECT id, invite_id, name, rating, comment, created_at, is_published, published_at
-                 FROM reviews ${where}
-                ORDER BY created_at DESC`
-  const stmt = db.prepare(sql)
-  const rows = (
-    parsed.data.published !== undefined
-      ? stmt.all(Number(parsed.data.published))
-      : stmt.all()
-  ) as ReviewRow[]
+  let query = db
+    .from('reviews')
+    .select('id, invite_id, name, rating, comment, created_at, is_published, published_at')
+    .order('created_at', { ascending: false })
 
-  return rows.map((r) => ({ ...r, is_published: r.is_published === 1 }))
+  if (parsed.data.published !== undefined) {
+    query = query.eq('is_published', parsed.data.published === '1')
+  }
+
+  const { data, error } = await query
+  if (error) {
+    console.error('[admin/reviews.get] query failed', error)
+    throw createError({ statusCode: 500, statusMessage: 'Failed to load reviews' })
+  }
+
+  return (data ?? []) as ReviewRow[]
 })

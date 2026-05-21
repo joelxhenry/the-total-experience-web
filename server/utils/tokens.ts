@@ -29,14 +29,20 @@ export type TokenLookup =
   | { ok: true; invite: InviteRow }
   | { ok: false; reason: 'not_found' | 'expired' | 'used' }
 
-export function lookupInviteByToken(token: string): TokenLookup {
+export async function lookupInviteByToken(token: string): Promise<TokenLookup> {
   const db = useDb()
-  const row = db
-    .prepare('SELECT * FROM invites WHERE token_hash = ?')
-    .get(hashToken(token)) as InviteRow | undefined
+  const { data, error } = await db
+    .from('invites')
+    .select('*')
+    .eq('token_hash', hashToken(token))
+    .maybeSingle<InviteRow>()
 
-  if (!row) return { ok: false, reason: 'not_found' }
-  if (row.used_at !== null) return { ok: false, reason: 'used' }
-  if (row.expires_at < Date.now()) return { ok: false, reason: 'expired' }
-  return { ok: true, invite: row }
+  if (error) {
+    console.error('[tokens.lookupInviteByToken] query failed', error)
+    return { ok: false, reason: 'not_found' }
+  }
+  if (!data) return { ok: false, reason: 'not_found' }
+  if (data.used_at !== null) return { ok: false, reason: 'used' }
+  if (data.expires_at < Date.now()) return { ok: false, reason: 'expired' }
+  return { ok: true, invite: data }
 }

@@ -37,14 +37,21 @@ export default defineEventHandler(async (event) => {
   if (!name || !comment) {
     throw createError({ statusCode: 400, statusMessage: 'Invalid review submission' })
   }
+
   const db = useDb()
   const now = Date.now()
   const tokenHash = hashToken(token)
 
-  const invite = db
-    .prepare('SELECT id, expires_at, used_at FROM invites WHERE token_hash = ?')
-    .get(tokenHash) as InviteRow | undefined
+  const { data: invite, error: lookupErr } = await db
+    .from('invites')
+    .select('id, expires_at, used_at')
+    .eq('token_hash', tokenHash)
+    .maybeSingle<InviteRow>()
 
+  if (lookupErr) {
+    console.error('[reviews/submit] lookup failed', lookupErr)
+    throw createError({ statusCode: 500, statusMessage: 'Failed to load invite' })
+  }
   if (!invite) {
     throw createError({ statusCode: 404, statusMessage: 'Invite not found' })
   }
@@ -55,22 +62,40 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 410, statusMessage: 'Invite expired' })
   }
 
-  const reviewId = randomUUID()
+  // Conditional update doubles as a single-use lock: only the request that
+  // flips used_at from null to `now` is allowed to insert the review.
+  const { data: claimed, error: claimErr } = await db
+    .from('invites')
+    .update({ used_at: now })
+    .eq('id', invite.id)
+    .is('used_at', null)
+    .select('id')
 
-  const txn = db.transaction(() => {
-    const markUsed = db
-      .prepare('UPDATE invites SET used_at = ? WHERE id = ? AND used_at IS NULL')
-      .run(now, invite.id)
-    if (markUsed.changes !== 1) {
-      throw createError({ statusCode: 409, statusMessage: 'Invite already used' })
-    }
-    db.prepare(
-      `INSERT INTO reviews (id, invite_id, name, rating, comment, created_at, is_published)
-       VALUES (?, ?, ?, ?, ?, ?, 0)`
-    ).run(reviewId, invite.id, name, rating, comment, now)
+  if (claimErr) {
+    console.error('[reviews/submit] claim failed', claimErr)
+    throw createError({ statusCode: 500, statusMessage: 'Failed to claim invite' })
+  }
+  if (!claimed || claimed.length !== 1) {
+    throw createError({ statusCode: 409, statusMessage: 'Invite already used' })
+  }
+
+  const reviewId = randomUUID()
+  const { error: insertErr } = await db.from('reviews').insert({
+    id: reviewId,
+    invite_id: invite.id,
+    name,
+    rating,
+    comment,
+    created_at: now,
+    is_published: false
   })
 
-  txn()
+  if (insertErr) {
+    // Best-effort rollback of the invite claim so a retry can succeed.
+    await db.from('invites').update({ used_at: null }).eq('id', invite.id)
+    console.error('[reviews/submit] insert failed', insertErr)
+    throw createError({ statusCode: 500, statusMessage: 'Failed to save review' })
+  }
 
   setResponseStatus(event, 201)
   return { ok: true, id: reviewId }
